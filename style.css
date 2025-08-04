@@ -1,0 +1,299 @@
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fefefe;
+    }
+
+    a {
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .menutoggle{
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      font-size: 28px;
+      color: white;
+      background: rgba(46, 139, 87, 0.6);
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .side-menu {
+      position: fixed;
+      top: 20px;
+      right: -320px;
+      height: 300px;
+      width: 300px;
+      background: rgba(17, 25, 21, 0.95);
+      padding-top: 60px;
+      transition: right 0.3s cubic-bezier(0.77,0,0.175,1);
+      z-index: 1000;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .side-menu ul li {
+      margin-bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .side-menu ul li a {
+      color: white;
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      display: block;
+      transition: background 0.3s;
+    }
+
+    .side-menu ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .side-menu .donate-btn {
+      background-color: #ff6b6b;
+      border-radius: 5px;
+      width: 70%;
+      margin-bottom: 50px ;
+      text-align: center;
+      display: block;
+    }
+
+    .side-menu .donate-btn:hover {
+      background-color: #e05a5a;
+    }
+
+    .side-menu.open {
+      right: 20px;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('/Pictures/ghaziabad-hindustan-ghaziabad-organisation-teaching-volunteers-unregistered_2f16b14e-47a4-11e6-90e0-482a513bad8b.avif') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(2px);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background-color: #2e8b57;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero-btn:hover {
+      background-color: #256e45;
+    }
+
+    section {
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #2e8b57;
+      margin-bottom: 20px;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .carousel-images img {
+      min-width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+      flex-grow: 0;
+      transition: opacity 0.5s;
+    }
+
+    .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 10px;
+    }
+
+    .carousel-buttons button {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      font-size: 24px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .counter-section {
+      background-color: #e3ffe9;
+      text-align: center;
+    }
+
+    .counters {
+      display: flex;
+      position: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .counter-card {
+     
+      backdrop-filter: blur(100px);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0px 30px rgba(227, 228, 237, 0.37);
+      width: 200px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .counter-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .counter-box {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #003cff;
+    }
+
+    .counter-label {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #444;
+      margin-top: 10px;
+    }
+
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #256e45;
+    }
+    .card{
+        backdrop-filter: blur(100px);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0px 30px rgba(227, 228, 237, 0.37);
+      width: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+     .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .thank-you {
+      color: #2e8b57;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer {
+      background-color: #323232;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+    }
+
+    @media (max-width: 600px) {
+      .counters {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .carousel-images img {
+        height: 200px;
+      }
+    }

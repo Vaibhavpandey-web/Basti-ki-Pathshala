@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Basti Ki Pathshala</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!--Menu Toggle -->
+<div class="menutoggle" id="menutoggleBtn">☰</div>
+
+<!--Sliding Menu -->
+<div class="side-menu" id="sideMenu">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#volunteer">Volunteer</a></li>
+    <li><a href="#donate" class="donate-btn">Donate</a></li>
+  </ul>
+</div>
+
+<!--Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Basti Ki Pathshala</h1>
+    <p>Empowering Slum Children Through Education</p>
+    <a href="#donate" class="hero-btn">Donate</a>
+  </div>
+</section>
+<section id="about" style="background-color: #f9f9f9 ;">
+  <div class="container">
+    <h2 style="font-weight: bold;">About Us</h2>
+    <p>
+      Basti Ki Pathshala is a grassroots initiative dedicated to transforming the lives of children living in urban slums. Our mission is to bridge the educational gap by providing free, quality learning opportunities to those who need it most. We believe that every child, regardless of their background, deserves access to education, nutrition, and a safe environment to grow and dream.
+    </p>
+    <p>
+      Our passionate team of volunteers runs community learning centers where children receive academic support, life skills training, and emotional guidance. We also organize health camps, distribute nutritious meals, and conduct awareness drives for parents and the community. Through our efforts, we aim to empower children to break the cycle of poverty and build a brighter future for themselves and their families.
+    </p>
+    <p>
+      Since our inception, we have impacted thousands of lives by not only focusing on education but also on holistic development. We invite you to join us as a volunteer, supporter, or donor and become a part of this journey of hope and change.
+    </p>
+  </div>
+</section>
+
+<!--Carousel -->
+<section>
+  <div class="container">
+    <div class="carousel">
+      <div class="carousel-images" id="carouselImages">
+        <img src="/Pictures/IMG_20200908_103120_Large.jpg" alt="Slide 1">
+        <img src="/Pictures/akc-donate-bg-11.webp" alt="Slide 2">
+        <img src="/Pictures/photo_IMG_04151636911015173-1024x768.jpg" alt="Slide 3">
+      </div>
+      <div class="carousel-buttons">
+        <button onclick="prevSlide()">‹</button>
+        <button onclick="nextSlide()">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Counter Section -->
+<section class="counter-section">
+  <div class="container">
+    <div class="counters">
+      <div class="counter-card">
+        <div class="counter-box" data-target="31250">0</div>
+        <div class="counter-label">Lifes changed</div>
+      </div>
+      <div class="counter-card">
+        <div class="counter-box" data-target="28976">0</div>
+        <div class="counter-label">meals served</div>
+      </div>
+      <div class="counter-card">
+        <div class="counter-box" data-target="10989">0</div>
+        <div class="counter-label">supporters</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Volunteer -->
+<section id="volunteer">
+  <div class="container">
+    <h2 style="text-align: center;">Become a Volunteer</h2>
+    <form id="volunteerForm" class="card" >
+      <input type="text" placeholder="Your Full Name" required>
+      <input type="email" placeholder="Your Email Address" required>
+      <input type="tel" placeholder="Phone Number">
+      <textarea rows="4" placeholder="Why do you want to volunteer?" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="thank-you" id="thankYouMessage" style="display: none;">
+      Thank you for volunteering! We’ll get in touch soon. 😊
+    </div>
+  </div>
+</section>
+
+<!--Donate-->
+<section id="donate" style="background-color: #f5f5f5;">
+  <div class="container">
+    <h2>Support Our Mission</h2>
+    <p>You can help us continue our work by donating. Every rupee helps!</p>
+    <p><strong>UPI ID:</strong> example@upi</p>
+    <p><strong>Phone:</strong> +91XXXXXXXXXX</p>
+  </div>
+</section>
+
+<!----Footer -->
+<footer>
+  <p>&copy; 2025 Basti Ki Pathshala</p>
+</footer>
+
+<script>
+  // Carousel
+  let index = 0;
+  const images = document.getElementById('carouselImages');
+  function showSlide(i) {
+    const total = images.children.length;
+    index = (i + total) % total;
+    images.style.transform = `translateX(-${index * 100}%)`;
+  }
+  function nextSlide() { showSlide(index + 1); }
+  function prevSlide() { showSlide(index - 1); }
+  setInterval(nextSlide, 5000);
+
+  // Volunteer Form
+  document.getElementById('volunteerForm').addEventListener('submit', e => {
+    e.preventDefault();
+    e.target.style.display = 'none';
+    document.getElementById('thankYouMessage').style.display = 'block';
+  });
+
+  // Animated Counters
+  const counters = document.querySelectorAll('.counter-box');
+  let counterStarted = false;
+
+  function animateCounter(counter, target, duration = 2000) {
+    const startTime = performance.now();
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      counter.innerText = Math.floor(progress * target);
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.innerText = target;
+    }
+    requestAnimationFrame(update);
+  }
+
+  function startCounters() {
+    if (counterStarted) return;
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      animateCounter(counter, target);
+    });
+    counterStarted = true;
+  }
+
+  window.addEventListener('scroll', () => {
+    const section = document.querySelector('.counter-section');
+    if (window.scrollY + window.innerHeight > section.offsetTop + 100) {
+      startCounters();
+    }
+  });
+
+  // Sliding Menu
+  const menutoggle = document.getElementById('menutoggleBtn');
+  const sideMenu = document.getElementById('sideMenu');
+  menutoggle.addEventListener('click', () => {
+    sideMenu.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.side-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
